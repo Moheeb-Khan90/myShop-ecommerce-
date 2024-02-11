@@ -3,8 +3,7 @@ import { body } from 'express-validator'
 
 //CHECK USER ID
 const user_route_validate = (req, res, next) => {
-    const { id } = req.params
-    if (mongoose.Types.ObjectId.isValid(id)) {
+    if (mongoose.Types.ObjectId.isValid(req.user.USERID)) {
         next();
     } else {
         res.status(400).send('This Page Is Not Found');

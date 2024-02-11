@@ -74,9 +74,8 @@ class USER_CONTROLLER {
 
     //Get all USER information
     static GET_USER_INFO = async (req, res) => {
-        const { id } = req.params
         try {
-            const USER_INFO = await USER_MODEL.findById(id).select("-User_Password")
+            const USER_INFO = await USER_MODEL.findById(req.user.USERID).select("-User_Password")
             if (!USER_INFO) {
                 return res.status(404).json(
                     {
@@ -93,6 +92,7 @@ class USER_CONTROLLER {
                 })
 
         } catch (error) {
+            console.log(error)
             return res.status(500).json(
                 {
                     message: "internal server error",
@@ -152,6 +152,7 @@ class USER_CONTROLLER {
                     message: 'User information updated successfully',
                 });
             } catch (error) {
+    
                 return res.status(500).json(
                     {
                         message: "internal server error",
@@ -246,6 +247,7 @@ class USER_CONTROLLER {
 
 
             } catch (error) {
+                console.log(error)
                 return res.status(500).json(
                     {
                         message: "internal server error",
@@ -291,6 +293,7 @@ class USER_CONTROLLER {
                     },
                     KEY
                 )
+                console.log(isValid_user._id)
                 return res.status(200).json(
                     {
                         status: "fullfilled",
