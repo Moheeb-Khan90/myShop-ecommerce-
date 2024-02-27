@@ -1,4 +1,5 @@
 import { body } from 'express-validator'
+import mongoose from 'mongoose';
 
 //CHECK USER ID
 const category_route_validate = (req, res, next) => {
@@ -15,4 +16,4 @@ const categoryValidation = [
     body('productCategory').notEmpty().withMessage("category name must be required")
 ]
 
-export default categoryValidation
+export {categoryValidation,category_route_validate}

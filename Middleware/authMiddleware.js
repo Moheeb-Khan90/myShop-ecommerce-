@@ -18,13 +18,11 @@ const authenticateToken = async (req, res, next) => {
             if (err) {
               return res.status(403).json({ error: 'Invalid token' });
             }
-            req.user = user; // Set the decoded token to req.USERID
+            req.user = user; 
         })        
 
-        // Continue to the next middleware or route handler
         next();
     } catch (error) {
-        console.log(error)
         return res.status(401).json({
             error: "Invalid token",
             message: "Token verification failed"
