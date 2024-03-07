@@ -20,7 +20,6 @@ class USER_CONTROLLER {
                 }
             )
         } else {
-            let success = true
             const { User_Name, User_Email, User_Password, User_Address, User_Contact_Number } = req.body
             try {
                 //Check User Exist Or Not
@@ -31,7 +30,7 @@ class USER_CONTROLLER {
                     success = false
                     return res.status(409).json(
                         {
-                            success,
+                            status: "fullfilled",
                             error: 'User already exists'
                         }
                     );
@@ -55,10 +54,9 @@ class USER_CONTROLLER {
                     },
                     KEY
                 )
-                success = true
                 return res.status(200).json(
                     {
-                        success,
+                        status: "fullfilled",
                         message: "Signin successfully ",
                         token
                     })
@@ -87,7 +85,7 @@ class USER_CONTROLLER {
 
             return res.status(200).json(
                 {
-                    status: "fullfield",
+                    status: "fullfilled",
                     USER_INFO
                 })
 
@@ -152,7 +150,7 @@ class USER_CONTROLLER {
                     message: 'User information updated successfully',
                 });
             } catch (error) {
-    
+
                 return res.status(500).json(
                     {
                         message: "internal server error",
@@ -187,7 +185,7 @@ class USER_CONTROLLER {
                 if (!lengthOfOldpassword) {
                     return res.status(403).json(
                         {
-                            "error": "Enter the old password"
+                            error: "Enter the old password"
                         }
                     )
                 }
@@ -195,7 +193,7 @@ class USER_CONTROLLER {
                 if (lengthOfOldpassword < 7) {
                     return res.status(403).json(
                         {
-                            "error": "older password must be minimum 6 chracters"
+                            error: "older password must be minimum 6 chracters"
                         }
                     )
                 }
@@ -204,14 +202,14 @@ class USER_CONTROLLER {
                 if (!lengthOfNewPassword) {
                     return res.status(403).json(
                         {
-                            "error": "Enter the new password"
+                            error: "Enter the new password"
                         }
                     )
                 }
                 if (lengthOfNewPassword < 7) {
                     return res.status(403).json(
                         {
-                            "error": "New password must be minimum 6 chracters"
+                            error: "New password must be minimum 6 chracters"
                         }
                     )
                 }
@@ -223,7 +221,7 @@ class USER_CONTROLLER {
                 if (!compare_password) {
                     return res.status(404).json(
                         {
-                            "message": "Old Password Does't Match"
+                            message: "Old Password Does't Match"
                         }
                     )
                 }
@@ -240,8 +238,8 @@ class USER_CONTROLLER {
                 ).select('User_Password')
                 return res.status(200).json(
                     {
-
-                        "message": "Password Updated"
+                        status: "fullfilled",
+                        message: "Password Updated"
                     }
                 )
 

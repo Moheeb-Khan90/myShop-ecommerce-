@@ -4,6 +4,7 @@ import jwt  from "jsonwebtoken";
 const KEY = process.env.SECRET_KEY
 
 const authenticateToken = async (req, res, next) => {
+    try {
     const { authorization } = req.headers;
     
     if (!authorization) {
@@ -12,7 +13,6 @@ const authenticateToken = async (req, res, next) => {
         });
     }
 
-    try {
         // const decodedToken = Jwt.verify(authorization, KEY);
         jwt.verify(authorization,KEY, (err, user) => {
             if (err) {

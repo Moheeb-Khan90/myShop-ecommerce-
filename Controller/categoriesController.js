@@ -37,7 +37,7 @@ class PRODUCT_CATEGORY_CONTROLLER {
 
                     await NEW_CATEGORY.save()
                     return res.status(200).json({
-                        status: 'fulllfiled'
+                        status:"fullfilled",
                     })
                 }
 
@@ -108,7 +108,7 @@ class PRODUCT_CATEGORY_CONTROLLER {
                     )
                     return res.status(200).json(
                         {
-                            status: 'fulllfiled',
+                            status:"fullfilled",
                             update_category
                         }
                     )
@@ -133,7 +133,7 @@ class PRODUCT_CATEGORY_CONTROLLER {
             )
             return res.status(200).json(
                 {
-                    status: 'fulllfiled',
+                    status:"fullfilled",
                 }
             )
         } catch (error) {

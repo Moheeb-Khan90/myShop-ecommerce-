@@ -7,7 +7,6 @@ import { validationResult } from "express-validator"
 class PRODUCT_CONTROLLER {
     static ADD_PRODUCT = async (req, res) => {
         const errors = validationResult(req)
-        console.log(errors)
         if (!errors.isEmpty()) {
             const firstError = errors.array()[0].msg;
             console.log(firstError)
@@ -50,6 +49,7 @@ class PRODUCT_CONTROLLER {
                 })
                 await NEW_PRODUCT.save()
                 return res.status(200).json({
+                    status:"fullfilled",
                     msg: "product added"
                 })
             } catch (error) {
@@ -66,7 +66,7 @@ class PRODUCT_CONTROLLER {
         try {
             const SHOW_PRODUCT = await PRODUCT_MODEL.find()
             return res.status(200).json({
-                status: "fullfiled",
+                status:"fullfilled",
                 SHOW_PRODUCT
             })
         } catch (error) {
@@ -126,7 +126,7 @@ class PRODUCT_CONTROLLER {
                 )
                 return res.status(200).json(
                     {
-                        status: "fullfiled",
+                        status:"fullfilled",
                         msg: "product succesfully updated",
                     }
                 )
@@ -149,7 +149,7 @@ class PRODUCT_CONTROLLER {
             await PRODUCT_MODEL.findByIdAndDelete(productId)
             return res.status(200).json(
                 {
-                    status: "fullfiled",
+                    status:"fullfilled",
                     msg: "product deleted successfully",
                 }
             )
